@@ -31,6 +31,14 @@ def get_post(id: int):
    return text_posts.get(id)
 
 @this_app.post("/posts")
-def create_post():
-   
+def create_post(post : PostCreate):
+   new_post = {
+      "title": post.title,
+      "Desc": post.Desc
+   }
+   text_posts[max(text_posts.keys()) + 1] = new_post
+   return new_post
+
+
+# @this_app.delete -> later 
    
