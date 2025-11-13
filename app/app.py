@@ -49,7 +49,7 @@ async def get_feed(
          }
       )
    
-   return posts_data
+   return {"posts": posts_data}
    
 
 
