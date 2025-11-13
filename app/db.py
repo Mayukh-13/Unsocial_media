@@ -6,6 +6,12 @@ from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine, async_sessionmaker
 from sqlalchemy.orm import DeclarativeBase, relationship
 from datetime import timezone
+from datetime import datetime
+from sqlalchemy import Column, DateTime
+
+created_at = Column(DateTime, default=datetime.utcnow)
+
+
 
 DATABASE_URL = "sqlite+aiosqlite:///./test.db"
 
@@ -21,7 +27,7 @@ class Post(Base):
     url = Column(String, nullable = False)
     file_type = Column(String, nullable = False)
     file_name = Column(String, nullable = False)
-    created_at = Column(DateTime, default = timezone.utc)
+    created_at = Column(DateTime, default = datetime.utcnow)
     
     
 engine = create_async_engine(DATABASE_URL)
